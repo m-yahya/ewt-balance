@@ -2,7 +2,7 @@ const Web3 = require('web3')
 const moment = require('moment')
 
 const walletAddress = '0x86a5A44CFf58638784c2028e7181CEDe57933321'
-const web3 = new Web3('ws://80.158.20.81:8546')
+const web3 = new Web3('ws://localhost:8546')
 
 function timeConverter(UNIX_timestamp) {
   let newDate = new Date(UNIX_timestamp * 1000)

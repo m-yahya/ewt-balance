@@ -5,7 +5,7 @@ const moment = require('moment')
 //const volta = 'ws://80.158.47.134:7546';
 
 const walletAddress = '0x86a5A44CFf58638784c2028e7181CEDe57933321'
-const web3 = new Web3('ws://80.158.39.62:8546')
+const web3 = new Web3('ws://80.158.20.81:8546')
 
 async function main() {
   const latestBlockNumber = await web3.eth.getBlockNumber()

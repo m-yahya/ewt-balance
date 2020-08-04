@@ -2,7 +2,7 @@ const Web3 = require('web3')
 const moment = require('moment')
 
 const walletAddress = '0x86a5A44CFf58638784c2028e7181CEDe57933321'
-const web3 = new Web3('ws://localhost:8546')
+const web3 = new Web3('ws://80.158.20.81:8546')
 
 function timeConverter(UNIX_timestamp) {
   let newDate = new Date(UNIX_timestamp * 1000)
@@ -25,14 +25,19 @@ async function getBalance(address, block) {
 
 async function main() {
   let blocks = [
-    222726,
-    758317,
-    1292295,
-    1806619,
-    2342857,
-    2859142,
-    3381093,
-    3908432,
+    224166,
+    759757,
+    1293735,
+    1808059,
+    2343577,
+    2859862,
+    3381785,
+    3909123,
+    4399555,
+    4934044,
+    5451991,
+    5987593,
+    6505859,
   ]
   for (let i = 0; i < blocks.length; i++) {
     const blockNum = blocks[i]

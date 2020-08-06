@@ -1,8 +1,7 @@
-const Web3 = require('web3')
+const { web3, timeConverter, getBalance } = require('./utils')
 const moment = require('moment')
 
 const walletAddress = '0x86a5A44CFf58638784c2028e7181CEDe57933321'
-const web3 = new Web3('ws://80.158.20.81:8546')
 
 async function main() {
   const latestBlockNumber = await web3.eth.getBlockNumber()
@@ -36,24 +35,6 @@ async function main() {
     block = block + increment * day
     console.log(block, timeConverter(blockTime.timestamp), balance)
   }
-}
-
-function timeConverter(UNIX_timestamp) {
-  let newDate = new Date(UNIX_timestamp * 1000)
-  let year = newDate.getFullYear()
-  let month = ('0' + (newDate.getMonth() + 1)).slice(-2)
-  let date = ('0' + newDate.getDate()).slice(-2)
-  let hour = ('0' + newDate.getHours()).slice(-2)
-  let min = ('0' + newDate.getMinutes()).slice(-2)
-  let sec = ('0' + newDate.getSeconds()).slice(-2)
-  let parsingTime =
-    year + '-' + month + '-' + date + ' ' + hour + ':' + min + ':' + sec
-  return parsingTime
-}
-
-async function getBalance(address, block) {
-  let balance = await web3.eth.getBalance(address, block)
-  return balance
 }
 
 function getDaysInMonth(month, year) {

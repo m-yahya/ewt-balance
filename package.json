@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "balanceByBlock": "node src/block-balance.js",
+    "balanceByMonth": "node src/month-balance.js",
+    "dynamic": "node src/dynamic.js",
+    "getBlockNumber": "node src/getBlockNumber.js"
   },
   "keywords": [],
   "author": "",

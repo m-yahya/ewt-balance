@@ -1,32 +1,33 @@
-const { web3, timeConverter, getBalance } = require('./utils')
-const walletAddress = '0x86a5A44CFf58638784c2028e7181CEDe57933321'
+const { web3, timeConverter, getBalance } = require("./utils");
+const walletAddress = "0x86a5A44CFf58638784c2028e7181CEDe57933321";
 
 async function main() {
   let blocks = [
-    224166,
-    759757,
-    1293735,
-    1808059,
-    2343577,
-    2859862,
-    3381785,
-    3909123,
-    4399555,
-    4934044,
-    5451991,
-    5987593,
-    6505859,
-    7041288
-  ]
+    222726,
+    758317,
+    1292295,
+    1806619,
+    2342857,
+    2859142,
+    3381093,
+    3908432,
+    4398835,
+    4932662,
+    5450551,
+    5986153,
+    6504420,
+    7039848,
+    7567778,
+  ];
   for (let i = 0; i < blocks.length; i++) {
-    const blockNum = blocks[i]
-    const block = await web3.eth.getBlock(blockNum)
-    const time = timeConverter(block.timestamp)
-    const balance = await getBalance(walletAddress, blockNum)
+    const blockNum = blocks[i];
+    const block = await web3.eth.getBlock(blockNum);
+    const time = timeConverter(block.timestamp);
+    const balance = await getBalance(walletAddress, blockNum);
     console.log(
-      `Block Number: ${blockNum}, Timestamp: ${time}, Balance[wei]: ${balance}`,
-    )
+      `Block No.: ${blocks[i]}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}`
+    );
   }
 }
 
-main()
+main();

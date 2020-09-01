@@ -1,33 +1,50 @@
-const { web3, timeConverter, getBalance } = require("./utils");
+const { web3, timeConverter, getBalance, currentDate } = require("./utils");
 const walletAddress = "0x86a5A44CFf58638784c2028e7181CEDe57933321";
+const fs = require("fs");
+var path = require("path");
+
+let blocks = [
+  222726,
+  758317,
+  1292295,
+  1806619,
+  2342857,
+  2859142,
+  3381093,
+  3908432,
+  4398835,
+  4932662,
+  5450551,
+  5986153,
+  6504420,
+  7039848,
+  7567778,
+];
 
 async function main() {
-  let blocks = [
-    222726,
-    758317,
-    1292295,
-    1806619,
-    2342857,
-    2859142,
-    3381093,
-    3908432,
-    4398835,
-    4932662,
-    5450551,
-    5986153,
-    6504420,
-    7039848,
-    7567778,
-  ];
+  // get current date from utils
+  let date = currentDate();
+  // define file path
+  let file = path.join(__dirname + `/../tmp/${date}-block-balance.txt`);
+
+  // loop through the blocks array
   for (let i = 0; i < blocks.length; i++) {
     const blockNum = blocks[i];
     const block = await web3.eth.getBlock(blockNum);
     const time = timeConverter(block.timestamp);
     const balance = await getBalance(walletAddress, blockNum);
-    console.log(
-      `Block No.: ${blocks[i]}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}`
-    );
+    let content =
+      `Block No.: ${blocks[i]}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}` +
+      "\n";
+    // append values to file
+    fs.writeFile(file, content, { flag: "a+" }, (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+    });
   }
+  console.log("done writing files!");
 }
 
 main();

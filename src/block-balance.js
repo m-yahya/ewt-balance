@@ -16,6 +16,7 @@ async function main() {
     5451991,
     5987593,
     6505859,
+    7041288
   ]
   for (let i = 0; i < blocks.length; i++) {
     const blockNum = blocks[i]

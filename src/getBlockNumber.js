@@ -5,10 +5,10 @@ async function main() {
   const latestBlockNumber = await web3.eth.getBlockNumber();
 
   console.time("totalTime");
-  for (let i = 7439848; i < latestBlockNumber; i++) {
+  for (let i = 8464860; i < latestBlockNumber; i++) {
     const block = await web3.eth.getBlock(i);
     const time = timeConverter(block.timestamp);
-    if (time === "2020-10-01 00:00:00") {
+    if (time === "2020-11-01 00:00:00") {
       const balance = await getBalance(walletAddress, i);
       console.log(
         `Block No.: ${i}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}`

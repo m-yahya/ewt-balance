@@ -19,6 +19,7 @@ let blocks = [
   6504420,
   7039848,
   7567778,
+  8066319
 ];
 
 async function main() {

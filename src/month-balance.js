@@ -30,7 +30,9 @@ async function main() {
       time === "2020-06-01 00:00:00" ||
       time === "2020-07-01 00:00:00" ||
       time === "2020-08-01 00:00:00" ||
-      time === "2020-09-01 00:00:00"
+      time === "2020-09-01 00:00:00" ||
+      time === "2020-10-01 00:00:00" ||
+      time === "2020-11-01 00:00:00"
     ) {
       const balance = await getBalance(walletAddress, i);
       let content =

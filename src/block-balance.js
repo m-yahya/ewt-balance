@@ -28,6 +28,17 @@ async function main() {
   // define file path
   let file = path.join(__dirname + `/../tmp/${date}-block-balance.txt`);
 
+  // apend header
+  // append values to file
+  const header = "Block No., Local Time, Timestamp [UNIX], Balance [wei]" +
+    "\n"
+  fs.writeFile(file, header, { flag: "a+" }, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+  });
+
   // loop through the blocks array
   for (let i = 0; i < blocks.length; i++) {
     const blockNum = blocks[i];
@@ -35,7 +46,7 @@ async function main() {
     const time = timeConverter(block.timestamp);
     const balance = await getBalance(walletAddress, blockNum);
     let content =
-      `Block No.: ${blocks[i]}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}` +
+      `${blocks[i]}, ${time}, ${block.timestamp}, ${balance}` +
       "\n";
     // append values to file
     fs.writeFile(file, content, { flag: "a+" }, (err) => {

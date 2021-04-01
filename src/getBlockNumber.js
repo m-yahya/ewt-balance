@@ -5,7 +5,7 @@ async function main() {
   const latestBlockNumber = await web3.eth.getBlockNumber();
 
   console.time("totalTime");
-  for (let i = 10263341; i < latestBlockNumber; i++) {
+  for (let i = 10538730; i < latestBlockNumber; i++) {
     const block = await web3.eth.getBlock(i);
     const time = timeConverter(block.timestamp);
     if (time === "2021-03-01 00:00:00") {
@@ -13,7 +13,7 @@ async function main() {
       console.log(
         `Block No.: ${i}, Local Time: ${time}, Timestamp [UNIX]: ${block.timestamp}, Balance [wei]: ${balance}`
       );
-    }
+   }
   }
   console.timeEnd("totalTime");
 }

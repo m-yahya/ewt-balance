@@ -3,6 +3,8 @@ const Web3 = require("web3");
 // set up web3 provider
 //const volta = 'ws://80.158.39.62:8546';
 //const volta = 'ws://80.158.47.134:7546';
+// const web3 = new Web3("wss://services.my-oli.com/ewc-node:7546");
+//const web3 = new Web3("ws://localhost:7546");
 const web3 = new Web3("ws://80.158.47.134:8546");
 
 // covert UNIX timestamp to human readable format

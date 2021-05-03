@@ -25,19 +25,24 @@ let blocks = [
   9545086,
   10063351,
   10538736,
-  11072995
+  11055725,
+  11072995,
+  11589857
 ];
 
 async function main() {
   // get current date from utils
   let date = currentDate();
   // define file path
-  let file = path.join(__dirname + `/../tmp/${date}-block-balance.txt`);
+  let file = path.join(__dirname + `/../tmp/${date}-block-balance.csv`);
 
   // apend header
   // append values to file
   const header =
-    "Block No., Local Time, Timestamp [UNIX], Balance [wei]" + "\n";
+  `Wallet Address, ${walletAddress}` +
+  "\n" +
+  "Block No., Local Time, Timestamp [UNIX], Balance [wei]" +
+  "\n";
   fs.writeFile(file, header, { flag: "a+" }, (err) => {
     if (err) {
       console.error(err);

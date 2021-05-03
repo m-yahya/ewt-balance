@@ -4,7 +4,7 @@ const walletAddress = "0x54809eA74BECdD734d2C4329729835ab39BB23F3";
 async function main() {
   const latestBlockNumber = await web3.eth.getBlockNumber();
   console.time("totalTime");
-  for (let i = 11262966; i < latestBlockNumber; i++) {
+  for (let i = 11624374; i < latestBlockNumber; i++) {
     const block = await web3.eth.getBlock(i);
     const time = timeConverter(block.timestamp);
     const timeslice = time.slice(-8);

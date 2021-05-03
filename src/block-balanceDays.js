@@ -39,18 +39,39 @@ let blocks = [
   11228417,
   11245687,
   11262966,
+  11280235,
+  11297510,
+  11314777,
+  11332039,
+  11349253,
+  11366108,
+  11382975,
+  11399936,
+  11417212,
+  11434484,
+  11451727,
+  11468996,
+  11486264,
+  11503530,
+  11520796,
+  11538062,
+  11555324,
+  11572590,
+  11589857,
+  11607119,
+  11624374
 ];
 
 async function main() {
   // get current date from utils
   let date = currentDate();
   // define file path
-  let file = path.join(__dirname + `/../days/${date}-block-balance.txt`);
+  let file = path.join(__dirname + `/../days/${date}-block-balance.csv`);
 
   // apend header
   // append values to file
   const header =
-    "Wallet Address: 0x54809eA74BECdD734d2C4329729835ab39BB23F3" +
+    `Wallet Address, ${walletAddress}` +
     "\n" +
     "Block No., Local Time, Timestamp [UNIX], Balance [wei]" +
     "\n";

@@ -42,7 +42,7 @@ async function main() {
   const header =
   `Wallet Address, ${walletAddress}` +
   "\n" +
-  "Block No., Local Time, Balance [wei]" +
+  "Block No., Local Time, Timestamp [UNIX], Balance [wei]" +
   "\n";
   fs.writeFile(file, header, { flag: "a+" }, (err) => {
     if (err) {
@@ -58,7 +58,7 @@ async function main() {
     const time = timeConverter(block.timestamp);
     const balance = await getBalance(walletAddress, blockNum);
     let content =
-      `${blocks[i]}, ${time}, ${balance}` + "\n";
+      `${blocks[i]}, ${time}, ${block.timestamp}, ${balance}` + "\n";
     // append values to file
     fs.writeFile(file, content, { flag: "a+" }, (err) => {
       if (err) {

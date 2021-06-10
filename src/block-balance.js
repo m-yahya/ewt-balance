@@ -19,14 +19,14 @@ function main() {
     let date = currentDate();
 
     // define file path
-    let file = path.join(__dirname + `/../tmp/${network}-${date}.csv`);
+    let file = path.join(__dirname + `/../tmp/${network}-${date}.xlsx`);
 
     // apend header
     // append values to file
     const header =
       `Wallet Address, ${publickey}` +
       "\n" +
-      "Block No., Local Time, Balance [wei]" +
+      "Block No., Local Time, Balance [EWT]" +
       "\n";
     fs.writeFile(file, header, { flag: "a+" }, (err) => {
       if (err) {
@@ -41,7 +41,8 @@ function main() {
       const block = await web3.eth.getBlock(blockNum);
       const time = timeConverter(block.timestamp);
       const balance = await getBalance(publickey, blockNum);
-      let content = `${BLOCKS[i]}, ${time}, ${balance}` + "\n";
+      let content =
+        `${BLOCKS[i]}, ${time}, ${balance / 1000000000000000000}` + "\n";
 
       // append values to file
       fs.writeFile(file, content, { flag: "a+" }, (err) => {

@@ -1,7 +1,7 @@
 const { web3, timeConverter } = require("./helpers");
 
 async function main() {
-  let index = 14242264;
+  let index = 14737633;
   const latestBlockNumber = await web3.eth.getBlockNumber();
   console.time("totalTime");
   for (index; index < latestBlockNumber; index++) {

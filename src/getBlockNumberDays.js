@@ -10,9 +10,11 @@ async function main() {
   for (index; index < latestBlockNumber; index++) {
     const block = await web3.eth.getBlock(index);
     const time = timeConverter(block.timestamp);
-    const timeslice = time.slice(-8);
-    if (timeslice === "00:00:00") {
-      console.log(`${index},`);
+    let timeslice = time.slice(-8);
+    timeslice = timeslice.slice(0, 5);
+  //  console.log(timeslice);
+    if (timeslice === "00:00") {
+      console.log(`${index}`);
       array.push(index);
     }
   }

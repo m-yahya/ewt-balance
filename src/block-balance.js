@@ -2,7 +2,7 @@ const { PUBLICKEYS, NETWORKS, BLOCKS } = require("./utils/constants");
 
 const {
   web3,
-  timeConverter,
+  unixToHumanReadable,
   getBalance,
   currentDate,
 } = require("./utils/helpers");
@@ -39,7 +39,7 @@ function main() {
     for (let i = 0; i < BLOCKS.length; i++) {
       const blockNum = BLOCKS[i];
       const block = await web3.eth.getBlock(blockNum);
-      const time = timeConverter(block.timestamp);
+      const time = unixToHumanReadable(block.timestamp);
       const balance = await getBalance(publickey, blockNum);
       let content =
         `${BLOCKS[i]}, ${time}, ${balance / 1000000000000000000}` + "\n";

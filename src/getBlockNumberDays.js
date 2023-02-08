@@ -1,4 +1,4 @@
-const { web3, timeConverter } = require("./utils/helpers");
+const { web3, unixToHumanReadable } = require("./utils/helpers");
 const { BLOCKS } = require("./utils/constants");
 
 let array = [];
@@ -9,7 +9,7 @@ async function main() {
   console.time("totalTime");
   for (index; index < latestBlockNumber; index++) {
     const block = await web3.eth.getBlock(index);
-    const time = timeConverter(block.timestamp);
+    const time = unixToHumanReadable(block.timestamp);
     let timeslice = time.slice(-8);
     timeslice = timeslice.slice(0, 5);
   //  console.log(timeslice);

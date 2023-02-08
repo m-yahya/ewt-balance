@@ -1,25 +1,56 @@
-const Web3 = require("web3");
-
 // set up web3 provider
-//const volta = 'ws://80.158.39.62:8546';
-//const volta = 'ws://80.158.47.134:7546';
-// const web3 = new Web3("wss://services.my-oli.com/ewc-node:7546");
-//const web3 = new Web3("ws://localhost:7546");
-const web3 = new Web3("ws://80.158.47.134:8546");
+const Web3 = require("web3");
+const dotenv = require("dotenv");
+dotenv.config();
+
+const web3 = new Web3(process.env.EWC_RPC);
 
 // covert UNIX timestamp to human readable format
-const timeConverter = (UNIX_timestamp) => {
-  let newDate = new Date(UNIX_timestamp * 1000);
-  let year = newDate.getFullYear();
-  let month = ("0" + (newDate.getMonth() + 1)).slice(-2);
-  let date = ("0" + newDate.getDate()).slice(-2);
-  let hour = ("0" + newDate.getHours()).slice(-2);
-  let min = ("0" + newDate.getMinutes()).slice(-2);
-  let sec = ("0" + newDate.getSeconds()).slice(-2);
-  let parsingTime =
-    year + "-" + month + "-" + date + " " + hour + ":" + min + ":" + sec;
+const unixToHumanReadable = (timestamp) => {
+  const date = new Date(timestamp * 1000);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
 
-  return parsingTime;
+  const readableTime =
+    year +
+    "-" +
+    (month < 10 ? "0" : "") +
+    month +
+    "-" +
+    (day < 10 ? "0" : "") +
+    day +
+    " " +
+    (hours < 10 ? "0" : "") +
+    hours +
+    ":" +
+    (minutes < 10 ? "0" : "") +
+    minutes +
+    ":" +
+    (seconds < 10 ? "0" : "") +
+    seconds;
+
+  return readableTime;
+};
+
+// get current date
+const currentDate = () => {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+  todayDate =
+    year +
+    "-" +
+    (month < 10 ? "0" : "") +
+    month +
+    "-" +
+    (day < 10 ? "0" : "") +
+    day;
+  return todayDate;
 };
 
 // get balance
@@ -28,15 +59,4 @@ const getBalance = async (address, block) => {
   return balance;
 };
 
-// get current date
-const currentDate = () => {
-  let d = new Date();
-  let year = d.getFullYear();
-  let month = d.getMonth() + 1;
-  let day = d.getDate();
-
-  let date = `${day}-${month}-${year}`;
-  return date;
-};
-
-module.exports = { web3, timeConverter, getBalance, currentDate };
+module.exports = { web3, unixToHumanReadable, currentDate, getBalance };

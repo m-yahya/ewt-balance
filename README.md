@@ -62,6 +62,12 @@ $ npm run dynamic
 $ npm run getBlockNumber
 ```
 
+## Updated 01.06.21
+
+1. Run `node getBlockNumber.js`
+2. Copy block numbers from console to `BLOCKS.js` array
+3. Run `node block-balance.js`
+
 ## 2. Contributing
 
 Pull requests are welcome.

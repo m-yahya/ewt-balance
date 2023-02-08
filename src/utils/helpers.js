@@ -29,7 +29,6 @@ const getBalance = async (address, block) => {
 };
 
 // get current date
-
 const currentDate = () => {
   let d = new Date();
   let year = d.getFullYear();
